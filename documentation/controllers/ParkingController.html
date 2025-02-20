@@ -1,0 +1,1045 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>project-root documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">project-root documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content controller">
+                   <div class="content-data">
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Controllers</li>
+  <li class="breadcrumb-item" >ParkingController</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/parking/parking.controller.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>parking</code>
+            </p>
+
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#clearSlot" >clearSlot</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#create" >create</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#getRegistrationNumbersByColor" >getRegistrationNumbersByColor</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#getSlotNumbersByColor" >getSlotNumbersByColor</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#getStatus" >getStatus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#incrementSlots" >incrementSlots</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#parkCar" >parkCar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearSlot"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>clearSlot</b></span>
+                        <a href="#clearSlot"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>clearSlot(clearSlotDto: <a href="../classes/ClearSlotDto.html" target="_self">ClearSlotDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;clear&#x27;)<br />@ApiOperation({summary: &#x27;Clear a parking slot&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Slot cleared successfully&#x27;, schema: undefined})<br />@ApiResponse({status: undefined, description: &#x27;Invalid slot number or slot already empty&#x27;, schema: undefined})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="182"
+                                    class="link-to-prism">src/parking/parking.controller.ts:182</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>clearSlotDto</td>
+                                            <td>
+                                                            <code><a href="../classes/ClearSlotDto.html" target="_self" >ClearSlotDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(createParkingDto: <a href="../classes/CreateParkingDto.html" target="_self">CreateParkingDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;create&#x27;)<br />@ApiOperation({summary: &#x27;Create a new parking lot&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Parking lot created successfully&#x27;, schema: undefined})<br />@ApiResponse({status: undefined, description: &#x27;Invalid number of slots&#x27;, schema: undefined})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/parking/parking.controller.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>createParkingDto</td>
+                                            <td>
+                                                            <code><a href="../classes/CreateParkingDto.html" target="_self" >CreateParkingDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRegistrationNumbersByColor"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>getRegistrationNumbersByColor</b></span>
+                        <a href="#getRegistrationNumbersByColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getRegistrationNumbersByColor(color: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;registration_numbers/:color&#x27;)<br />@ApiOperation({summary: &#x27;Get registration numbers of cars by color&#x27;})<br />@ApiParam({name: &#x27;color&#x27;, example: &#x27;white&#x27;, description: &#x27;Color of the cars to search for&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Registration numbers retrieved successfully&#x27;, schema: undefined})<br />@ApiResponse({status: undefined, description: &#x27;Parking lot not initialized or invalid color&#x27;, schema: undefined})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/parking/parking.controller.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>color</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSlotNumbersByColor"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>getSlotNumbersByColor</b></span>
+                        <a href="#getSlotNumbersByColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getSlotNumbersByColor(color: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;slot_numbers/:color&#x27;)<br />@ApiOperation({summary: &#x27;Get slot numbers of cars by color&#x27;})<br />@ApiParam({name: &#x27;color&#x27;, example: &#x27;white&#x27;, description: &#x27;Color of the cars to search for&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Slot numbers retrieved successfully&#x27;, schema: undefined})<br />@ApiResponse({status: undefined, description: &#x27;Parking lot not initialized or invalid color&#x27;, schema: undefined})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">src/parking/parking.controller.ts:155</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>color</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getStatus"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>getStatus</b></span>
+                        <a href="#getStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getStatus()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;status&#x27;)<br />@ApiOperation({summary: &#x27;Get status of all occupied parking slots&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Status retrieved successfully&#x27;, schema: undefined})<br />@ApiResponse({status: undefined, description: &#x27;Parking lot not initialized&#x27;, schema: undefined})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">src/parking/parking.controller.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="incrementSlots"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>incrementSlots</b></span>
+                        <a href="#incrementSlots"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>incrementSlots(incrementSlotDto: <a href="../classes/IncrementSlotDto.html" target="_self">IncrementSlotDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Patch(&#x27;parking_lot&#x27;)<br />@ApiOperation({summary: &#x27;Add more slots to the parking lot&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Slots added successfully&#x27;, schema: undefined})<br />@ApiResponse({status: undefined, description: &#x27;Invalid increment value or parking lot not initialized&#x27;, schema: undefined})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/parking/parking.controller.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>incrementSlotDto</td>
+                                            <td>
+                                                            <code><a href="../classes/IncrementSlotDto.html" target="_self" >IncrementSlotDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parkCar"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>parkCar</b></span>
+                        <a href="#parkCar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>parkCar(parkCarDto: <a href="../classes/ParkCarDto.html" target="_self">ParkCarDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;park&#x27;)<br />@ApiOperation({summary: &#x27;Park a car in the parking lot&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Car parked successfully&#x27;, schema: undefined})<br />@ApiResponse({status: undefined, description: &#x27;Parking lot is full or not initialized&#x27;, schema: undefined})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/parking/parking.controller.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>parkCarDto</td>
+                                            <td>
+                                                            <code><a href="../classes/ParkCarDto.html" target="_self" >ParkCarDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Param, Patch, HttpStatus } from &#x27;@nestjs/common&#x27;;
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
+import { ParkingService } from &#x27;./parking.service&#x27;;
+import { ParkCarDto } from &#x27;./parking.dto&#x27;;
+import { CreateParkingDto } from &#x27;./dto/create-parking.dto&#x27;;
+import { IncrementSlotDto } from &#x27;./dto/increment-slot.dto&#x27;;
+import { ClearSlotDto } from &#x27;./dto/clear-slot.dto&#x27;;
+
+@ApiTags(&#x27;Parking&#x27;)
+@Controller(&#x27;parking&#x27;)
+export class ParkingController {
+  constructor(private readonly parkingService: ParkingService) {}
+
+  @Post(&#x27;create&#x27;)
+  @ApiOperation({ summary: &#x27;Create a new parking lot&#x27; })
+  @ApiResponse({ 
+    status: HttpStatus.CREATED, 
+    description: &#x27;Parking lot created successfully&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Created a parking lot with 5 slots&#x27; },
+        total_slots: { type: &#x27;number&#x27;, example: 5 }
+      }
+    }
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: &#x27;Invalid number of slots&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Number of slots must be greater than 0&#x27; },
+        error: { type: &#x27;string&#x27;, example: &#x27;Bad Request&#x27; },
+        statusCode: { type: &#x27;number&#x27;, example: 400 }
+      }
+    }
+  })
+  create(@Body() createParkingDto: CreateParkingDto) {
+    return this.parkingService.createParkingLot(createParkingDto.no_of_slot);
+  }
+
+  @Patch(&#x27;parking_lot&#x27;)
+  @ApiOperation({ summary: &#x27;Add more slots to the parking lot&#x27; })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: &#x27;Slots added successfully&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Added 4 slots. Total slots are now 9&#x27; },
+        total_slots: { type: &#x27;number&#x27;, example: 9 }
+      }
+    }
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: &#x27;Invalid increment value or parking lot not initialized&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Parking lot not initialized or invalid increment value&#x27; },
+        error: { type: &#x27;string&#x27;, example: &#x27;Bad Request&#x27; },
+        statusCode: { type: &#x27;number&#x27;, example: 400 }
+      }
+    }
+  })
+  incrementSlots(@Body() incrementSlotDto: IncrementSlotDto) {
+    return this.parkingService.incrementSlots(incrementSlotDto.increment_slot);
+  }
+
+  @Post(&#x27;park&#x27;)
+  @ApiOperation({ summary: &#x27;Park a car in the parking lot&#x27; })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: &#x27;Car parked successfully&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Allocated slot number: 1&#x27; },
+        allocated_slot_number: { type: &#x27;number&#x27;, example: 1 }
+      }
+    }
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: &#x27;Parking lot is full or not initialized&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Sorry, parking lot is full&#x27; },
+        error: { type: &#x27;string&#x27;, example: &#x27;Bad Request&#x27; },
+        statusCode: { type: &#x27;number&#x27;, example: 400 }
+      }
+    }
+  })
+  parkCar(@Body() parkCarDto: ParkCarDto) {
+    return this.parkingService.parkCar(parkCarDto);
+  }
+
+  @Get(&#x27;registration_numbers/:color&#x27;)
+  @ApiOperation({ summary: &#x27;Get registration numbers of cars by color&#x27; })
+  @ApiParam({ name: &#x27;color&#x27;, example: &#x27;white&#x27;, description: &#x27;Color of the cars to search for&#x27; })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: &#x27;Registration numbers retrieved successfully&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Found 2 cars&#x27; },
+        registration_numbers: {
+          type: &#x27;array&#x27;,
+          items: { type: &#x27;string&#x27; },
+          example: [&#x27;KA-01-HH-1234&#x27;, &#x27;KA-02-AB-9999&#x27;]
+        }
+      }
+    }
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: &#x27;Parking lot not initialized or invalid color&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Parking lot not initialized or no cars found with color white&#x27; },
+        error: { type: &#x27;string&#x27;, example: &#x27;Bad Request&#x27; },
+        statusCode: { type: &#x27;number&#x27;, example: 400 }
+      }
+    }
+  })
+  getRegistrationNumbersByColor(@Param(&#x27;color&#x27;) color: string) {
+    return this.parkingService.getRegistrationNumbersByColor(color);
+  }
+
+  @Get(&#x27;slot_numbers/:color&#x27;)
+  @ApiOperation({ summary: &#x27;Get slot numbers of cars by color&#x27; })
+  @ApiParam({ name: &#x27;color&#x27;, example: &#x27;white&#x27;, description: &#x27;Color of the cars to search for&#x27; })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: &#x27;Slot numbers retrieved successfully&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Found cars in 3 slots&#x27; },
+        slot_numbers: {
+          type: &#x27;array&#x27;,
+          items: { type: &#x27;number&#x27; },
+          example: [1, 5, 12]
+        }
+      }
+    }
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: &#x27;Parking lot not initialized or invalid color&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Parking lot not initialized or no cars found with color white&#x27; },
+        error: { type: &#x27;string&#x27;, example: &#x27;Bad Request&#x27; },
+        statusCode: { type: &#x27;number&#x27;, example: 400 }
+      }
+    }
+  })
+  getSlotNumbersByColor(@Param(&#x27;color&#x27;) color: string) {
+    return this.parkingService.getSlotNumbersByColor(color);
+  }
+
+  @Post(&#x27;clear&#x27;)
+  @ApiOperation({ summary: &#x27;Clear a parking slot&#x27; })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: &#x27;Slot cleared successfully&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Slot number 1 is free&#x27; },
+        freed_slot_number: { type: &#x27;number&#x27;, example: 1 }
+      }
+    }
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: &#x27;Invalid slot number or slot already empty&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Slot already empty or invalid slot number&#x27; },
+        error: { type: &#x27;string&#x27;, example: &#x27;Bad Request&#x27; },
+        statusCode: { type: &#x27;number&#x27;, example: 400 }
+      }
+    }
+  })
+  clearSlot(@Body() clearSlotDto: ClearSlotDto) {
+    return this.parkingService.clearSlot(clearSlotDto);
+  }
+
+  @Get(&#x27;status&#x27;)
+  @ApiOperation({ summary: &#x27;Get status of all occupied parking slots&#x27; })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: &#x27;Status retrieved successfully&#x27;,
+    schema: {
+      type: &#x27;array&#x27;,
+      items: {
+        properties: {
+          slot_no: { type: &#x27;number&#x27;, example: 1 },
+          registration_no: { type: &#x27;string&#x27;, example: &#x27;KA-01-HH-1234&#x27; },
+          color: { type: &#x27;string&#x27;, example: &#x27;White&#x27; }
+        }
+      }
+    }
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: &#x27;Parking lot not initialized&#x27;,
+    schema: {
+      properties: {
+        message: { type: &#x27;string&#x27;, example: &#x27;Parking lot not initialized&#x27; },
+        error: { type: &#x27;string&#x27;, example: &#x27;Bad Request&#x27; },
+        statusCode: { type: &#x27;number&#x27;, example: 400 }
+      }
+    }
+  })
+  getStatus() {
+    return this.parkingService.getStatus();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'ParkingController.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
