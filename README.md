@@ -8,102 +8,83 @@ $ npm install
 
 ### Base URL
 ```
-http://localhost:3000/api/v1
+http://localhost:3000/api
 ```
 
 ### Table of Contents
-- [Parking Slot Management](#parking-slot-management)
-- [Illegal Parking Tracking](#illegal-parking-tracking)
+- [Parking Management](#parking-management)
 - [Error Handling](#error-responses)
 
-### Parking Slot Management
+### Parking Management
 
-#### Create Parking Slot
-- **POST** `/parking-slots`
-- **Description**: Create a new parking slot
+#### Create Parking Lot
+- **POST** `/parking/create`
+- **Description**: Create a new parking lot
 - **Request Body**:
   ```json
   {
-    "slotNumber": "string",
-    "location": "string",
-    "status": "available|occupied",
-    "type": "regular|handicap|electric"
+    "no_of_slot": "number"
   }
   ```
-- **Response**: Returns created parking slot details
+- **Response**: Returns created parking lot details with total slots
 
-#### Get All Parking Slots
-- **GET** `/parking-slots`
-- **Description**: Retrieve all parking slots
-- **Query Parameters**:
-  - `page` (optional): Page number for pagination
-  - `limit` (optional): Number of items per page
-  - `status` (optional): Filter by status
-  - `type` (optional): Filter by type
-- **Response**: Returns paginated list of parking slots
-
-#### Get Parking Slot by ID
-- **GET** `/parking-slots/:id`
-- **Description**: Retrieve specific parking slot details
-- **Response**: Returns parking slot details
-
-#### Update Parking Slot
-- **PUT** `/parking-slots/:id`
-- **Description**: Update parking slot information
+#### Add More Slots
+- **PATCH** `/parking/parking_lot`
+- **Description**: Add more slots to existing parking lot
 - **Request Body**:
   ```json
   {
-    "status": "available|occupied",
-    "type": "regular|handicap|electric"
+    "increment_slot": "number"
   }
   ```
-- **Response**: Returns updated parking slot details
+- **Response**: Returns updated total slots
 
-#### Delete Parking Slot
-- **DELETE** `/parking-slots/:id`
-- **Description**: Remove a parking slot from the system
-- **Response**: Returns success message
-
-### Illegal Parking Tracking
-
-#### Report Illegal Parking
-- **POST** `/illegal-parking`
-- **Description**: Report an illegally parked vehicle
+#### Park Car
+- **POST** `/parking/park`
+- **Description**: Park a car in the parking lot
 - **Request Body**:
   ```json
   {
-    "vehicleNumber": "string",
-    "location": "string",
-    "description": "string",
-    "photoEvidence": "string (base64)"
+    "registration_number": "string",
+    "color": "string"
   }
   ```
-- **Response**: Returns created report details
+- **Response**: Returns allocated slot number
 
-#### Get Illegal Parking Reports
-- **GET** `/illegal-parking`
-- **Description**: Retrieve all illegal parking reports
-- **Query Parameters**:
-  - `page` (optional): Page number for pagination
-  - `limit` (optional): Number of items per page
-  - `status` (optional): Filter by status (pending|resolved)
-- **Response**: Returns paginated list of reports
+#### Get Registration Numbers by Color
+- **GET** `/parking/registration_numbers/:color`
+- **Description**: Get registration numbers of all cars of a specific color
+- **Response**: Returns list of registration numbers
+
+#### Get Slot Numbers by Color
+- **GET** `/parking/slot_numbers/:color`
+- **Description**: Get slot numbers of all cars of a specific color
+- **Response**: Returns list of slot numbers
+
+#### Clear Parking Slot
+- **POST** `/parking/clear`
+- **Description**: Clear a parking slot
+- **Request Body**:
+  ```json
+  {
+    "slot_number": "number"
+  }
+  ```
+- **Response**: Returns freed slot details
+
+#### Get Parking Status
+- **GET** `/parking/status`
+- **Description**: Get status of all occupied parking slots
+- **Response**: Returns list of occupied slots with car details
 
 ### Error Responses
 
 All endpoints may return the following error responses:
 
-- **400 Bad Request**: Invalid input data
-- **404 Not Found**: Resource not found
+- **400 Bad Request**: Invalid input data or parking lot not initialized
 - **500 Internal Server Error**: Server-side error
 
-### Contact
-
-For any queries regarding the API, please contact:
-- Email: support@parkingapi.com
-- Phone: +1 (555) 123-4567
-
-## Compile and run the project
+## Running the app
 
 ```bash
 # development
@@ -116,7 +97,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Run tests
+## Test
 
 ```bash
 # unit tests

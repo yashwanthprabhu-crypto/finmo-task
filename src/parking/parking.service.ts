@@ -19,7 +19,7 @@ export class ParkingService {
       throw new BadRequestException('Parking lot not initialized');
     }
 
-    const index = this.slots.indexOf(null);
+    const index = this.slots.findIndex(slot => slot === null);
     if (index === -1) throw new BadRequestException('Parking lot full');
     
     this.slots[index] = {
@@ -91,29 +91,29 @@ export class ParkingService {
       throw new BadRequestException('Slot number or car registration number is required');
     }
 
-    const slotNumber = clearSlotDto.slot_number;
-    if (slotNumber) {
-    if (slotNumber < 1 || slotNumber > this.slots.length) {
-      throw new BadRequestException('Invalid slot number');
+    if (clearSlotDto.slot_number) {
+      const slotNumber = clearSlotDto.slot_number;
+      if (slotNumber < 1 || slotNumber > this.slots.length) {
+        throw new BadRequestException('Invalid slot number');
+      }
+
+      const index = slotNumber - 1;
+      
+      if (this.slots[index] === null) {
+        throw new BadRequestException('Slot is already empty');
+      }
+
+      this.slots[index] = null;
+      return { freed_slot_number: slotNumber };
     }
 
-    const index = slotNumber - 1;
-    
-    if (this.slots[index] === null) {
-      throw new BadRequestException('Slot is already empty');
+    if (clearSlotDto.car_registration_no) {
+      const index = this.slots.findIndex(slot => slot?.car_reg_no === clearSlotDto.car_registration_no);
+      if (index === -1) {
+        throw new BadRequestException('Car registration number not found');
+      }
+      this.slots[index] = null;
+      return { freed_slot_number: index + 1 };
     }
-
-    this.slots[index] = null;
-    return { freed_slot_number: slotNumber };
-  }
-
-if (clearSlotDto.car_registration_no) {
-  const index = this.slots.findIndex(slot => slot?.car_reg_no === clearSlotDto.car_registration_no);
-  if (index === -1) {
-    throw new BadRequestException('Car registration number not found');
-  }
-  this.slots[index] = null;
-  return { freed_slot_number: index + 1 };
-}
   }
 }
