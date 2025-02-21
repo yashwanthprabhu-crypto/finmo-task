@@ -6,9 +6,9 @@ import { MinPriorityQueue } from '@datastructures-js/priority-queue';
 @Injectable()
 export class ParkingService {
   private slots: Array<{ car_reg_no: string; color: string } | null> = [];
-  private freeSlots = new MinPriorityQueue<number>(); // Min heap for nearest slot allocation
-  private regNoToSlotMap = new Map<string, number>(); // For O(1) registration number lookups
-  private colorToRegNoMap = new Map<string, Set<string>>(); // For O(1) color-based lookups
+  private freeSlots = new MinPriorityQueue<number>(); 
+  private regNoToSlotMap = new Map<string, number>();
+  private colorToRegNoMap = new Map<string, Set<string>>(); 
 
   createParkingLot(slots: number) {
     if (slots <= 0) {
@@ -20,7 +20,7 @@ export class ParkingService {
     this.regNoToSlotMap.clear();
     this.colorToRegNoMap.clear();
 
-    // Initialize min heap with all available slots
+
     for (let i = 0; i < slots; i++) {
       this.freeSlots.enqueue(i);
     }
@@ -36,7 +36,6 @@ export class ParkingService {
       throw new BadRequestException('Parking lot full');
     }
 
-    // Get nearest available slot from min heap - O(log n)
     const slotIndex = this.freeSlots.dequeue()!;
     
     const normalizedColor = parkCarDto.color.toLowerCase();
@@ -46,7 +45,7 @@ export class ParkingService {
       color: normalizedColor
     };
 
-    // Update lookup maps - O(1)
+
     this.regNoToSlotMap.set(parkCarDto.car_reg_no, slotIndex);
     
     if (!this.colorToRegNoMap.has(normalizedColor)) {
@@ -71,7 +70,7 @@ export class ParkingService {
           color: slot.color
         };
       })
-      .filter(slot => slot !== null);  // Remove null entries
+      .filter(slot => slot !== null); 
   }
 
   getRegistrationNumbersByColor(color: string) {
@@ -79,7 +78,7 @@ export class ParkingService {
       throw new BadRequestException('Parking lot not initialized');
     }
 
-    // Convert to lowercase for case-insensitive comparison
+ 
     const normalizedColor = color.toLowerCase();
     const registrationNumbers = Array.from(this.colorToRegNoMap.get(normalizedColor) || []);
     return { registration_numbers: registrationNumbers };
@@ -91,11 +90,11 @@ export class ParkingService {
     }
 
     const slotNumbers: number[] = [];
-    // O(1) lookup for registration numbers by color
+  
     const regNos = this.colorToRegNoMap.get(color.toLowerCase());
     
     if (regNos) {
-      // O(1) lookup for each registration number's slot
+      
       for (const regNo of regNos) {
         const slot = this.regNoToSlotMap.get(regNo);
         if (slot !== undefined) {
@@ -119,7 +118,7 @@ export class ParkingService {
     const additionalSlots = new Array(incrementSlot).fill(null);
     this.slots = [...this.slots, ...additionalSlots];
     
-    // Add new slots to min heap
+
     for (let i = currentSize; i < currentSize + incrementSlot; i++) {
       this.freeSlots.enqueue(i);
     }
@@ -140,7 +139,7 @@ export class ParkingService {
       }
       slotIndex = clearSlotDto.slot_number - 1;
     } else if (clearSlotDto.car_registration_no) {
-      // O(1) lookup using map
+   
       slotIndex = this.regNoToSlotMap.get(clearSlotDto.car_registration_no) ?? null;
       if (slotIndex === null) {
         throw new BadRequestException('Car registration number not found');
@@ -155,7 +154,7 @@ export class ParkingService {
 
     const carDetails = this.slots[slotIndex]!;
     
-    // Update data structures
+
     this.slots[slotIndex] = null;
     this.freeSlots.enqueue(slotIndex);
     this.regNoToSlotMap.delete(carDetails.car_reg_no);
