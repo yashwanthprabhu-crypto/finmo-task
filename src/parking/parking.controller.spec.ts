@@ -64,7 +64,7 @@ describe('ParkingController', () => {
         {
           slot_no: 1,
           car_reg_no: 'KA-01-HH-1234',
-          color: 'White'
+          color: 'white'
         }
       ]);
     });
